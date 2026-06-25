@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from routes import products, prices, history, alerts
+from routes import products, prices, history, alerts, seasonal
 
 app = FastAPI(
     title="PriceScope API",
@@ -22,6 +22,7 @@ app.include_router(products.router, prefix="/api/products", tags=["Products"])
 app.include_router(prices.router, prefix="/api/prices", tags=["Prices"])
 app.include_router(history.router, prefix="/api/history", tags=["History"])
 app.include_router(alerts.router, prefix="/api/alerts", tags=["Alerts"])
+app.include_router(seasonal.router, prefix="/api/seasonal", tags=["Seasonal (Owner Only)"])
 
 
 @app.get("/")
